@@ -1,0 +1,8 @@
+.home-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 700px;
+    background-color: #0b0f19;
+}
