@@ -13,6 +13,7 @@ const ChatBox = () => {
 
   const fetchInitialQuestions = async () => {
     try {
+      
       const response = await fetch('http://localhost:5000/api/questions');
       const initialQuestions = await response.json();
       setMessages(initialQuestions.map((question) => ({ ...question, sender: 'user' })));
@@ -34,10 +35,8 @@ const ChatBox = () => {
       console.error('Error fetching files:', error);
     }
   };
-
   useEffect(() => {
-    // Fetch files only after the initial questions have been fetched
-    if (initialQuestionsFetched) {
+       if (initialQuestionsFetched) {
       fetchFiles();
     }
   }, [initialQuestionsFetched]);
@@ -72,6 +71,7 @@ const ChatBox = () => {
       setLoading(true);
 
       try {
+        
         const response = await fetch('http://localhost:5000/api/questions', {
           method: 'POST',
           headers: {
@@ -87,6 +87,7 @@ const ChatBox = () => {
         await response.json();
         fetchInitialQuestions();
         fetchFiles();
+    
       } catch (error) {
         console.error('Error sending message:', error);
       } finally {
